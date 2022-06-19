@@ -1,0 +1,296 @@
+
+/* This file is pretty much for styles, not much to it */
+
+body {
+    background-image: url('pics/background.png');
+    height: 100;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin-top: 5rem;
+  }
+  
+  h1, h3, h4, h5, h6 {
+  	color: #3f0e0e
+    
+  }
+
+  h2 {
+  	color: rgb(228, 199, 179);
+  }
+  
+  .bg-steel {
+    background-color: #d47f7f;
+  }
+  
+  .site-header .navbar-nav .nav-link {
+    color: #fff9f9;
+  }
+  
+  .site-header .navbar-nav .nav-link:hover {
+    color: #501919;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+  
+  .content-section {
+    background: #ffffff;
+    padding: 13px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  
+  .article-title {
+    color: #444444;
+    white-space: pre-line;
+    width: 35vw;
+    font-size: 23px;
+  }
+  
+  a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+    width: 35vw;
+    font-size: 16px;
+  }
+  
+  .article-img {
+    height: 55px;
+    width: 75px;
+    margin-right: 16px;
+    margin-top: 5px
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
+  
+  .article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .star-img {
+    height: 20px;
+    width: 20px;
+    margin-bottom: 4px;
+  }
+
+  .account-img {
+    height: 90px;
+    width: 120px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 40px
+  }
+
+  .account-heading {
+    margin-top: 20px;
+    font-size: 1.8rem;
+  }
+
+  .homepage-pic {
+    margin-bottom:10px;
+    width: 15vw;
+  }
+
+  .post-pic:hover {
+    opacity: 0.7;
+    transition: 0.1s;
+  }
+
+  .more_post-pic {
+    margin-bottom:5px;
+    width: 10vw;
+  }
+
+  .more_post-pic:hover {
+    opacity: 0.7;
+    transition: 0.1s;
+  }
+
+  .foodstuff-img {
+    height: 240px;
+    width: 320px;
+    margin-bottom: 20px
+  }
+
+  .utility {
+    margin-top: 70px;
+  }
+
+
+
+  
+/* Modal CSS from W3 Schools */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 2; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  z-index: 1;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.close {
+  float: left;
+  font-size: 30px;
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cursor-hand {
+  cursor: pointer
+}
+.foodstuff-img {
+  height:43px;
+  width:50px;
+  padding-bottom:0px;
+  vertical-align: -25px;
+}
+
+.floatboxr {
+  float: right;
+  width: 45%;
+  height: 45%;
+  background: lightblue;
+}
+.floatboxl {
+  float: left;
+  width: 45%;
+  height: 45%;
+  background: lightblue;
+}
+
+.flex-home {
+  display: flex;
+  height:80vh;
+}
+
+.flex-home > div {
+  background-color: #f1f1f1;
+  width:50%;
+  height:100%;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  transition: box-shadow .4s;
+}
+
+.flex-home > div:hover {
+  box-shadow: 0 0 11px rgba(53, 3, 82, 0.3); 
+}
+
+.vert-centre-text {
+  display: inline-block;
+  vertical-align: -35vh;
+  
+}
+
+.page-container {
+  margin-left:10px;
+  margin-right:10px;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.recipe-card {
+    float:left;
+    margin: 5px;
+  }
+
+.like-button {
+  font-size:200%;
+  color:#ff0000;
+  float:right;
+  vertical-align:top;
+  cursor:pointer;
+  transition: text-shadow 0.3s;
+  }
+
+.like-button:hover {
+  /* Faking an outline with a drop shadow */
+    text-shadow:    
+    -1px -1px 0 #ff0000,
+    1px -1px 0 #ff0000,
+    -1px 1px 0 #ff0000,
+    1px 1px 0 #ff0000;  
+  }
+
+  .like-liked {
+    color: #ff0000
+  }
+

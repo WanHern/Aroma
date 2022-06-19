@@ -1,0 +1,135 @@
+/* Also used for recipe_cusine */
+.flex-ingredients {
+    height:85vh;
+    width: 100vw;
+    padding-left: 25px;
+  }
+  
+  .row {
+    display: table-caption;
+    flex-direction: row;
+    padding-left: 25px;
+    width: 95vw;
+  }
+  
+  .sidebar-column {
+
+    float:left;
+    overflow-y: scroll;
+    position: fixed;
+    width: 270px;
+    height: calc(100vh - 105px);
+    left: 0;
+    right: 0;
+    top: 60px;
+  }
+    
+  .ingredient-card {
+    float:left;
+    margin: 5px;
+    width: 6cm; 
+  }
+  .recipe-card {
+    float:left;
+    margin: 5px;
+    width: 6cm; 
+    cursor: pointer;
+  }
+
+
+  .ingredients-column {
+    left:260px;
+    flex:50%;
+    margin-top: 0;
+    margin-left: 230px;
+  }
+
+  .close-list {
+    bottom:5px;
+    position: relative;
+    float:right;
+  }
+
+  .input-button {
+    float:left;
+    width: calc(100vw - 600px);
+  }
+  .l-float {
+      float:left;
+  }
+  .search-recipes {
+      margin-left:20px;
+      margin-top:5px;
+  }
+
+  .tabs {
+    cursor:pointer;
+    color:#ffffff;
+    font-weight: bold;
+    }
+
+  .category-card {
+    float:left;
+    margin: 5px;
+    cursor:pointer;
+    width: 6cm;
+  }
+  
+  .centre-header {
+    text-align: center;
+  }
+  .add-btn {
+    margin-left:25px;
+    margin-top:5px;
+  }
+
+  .card-carrier {
+    width:(100vw - 250px);
+    margin-left:-5px;
+    margin-top:20px;
+  }
+
+  .list-group-item{
+    background-color: bisque;
+  }
+  
+
+  .warning-box {
+    display:none;
+    margin-top:10px;
+    margin-right:50px;
+    float:right
+  }
+  
+
+  .loader{
+    position:absolute;
+    top:35vh;
+    left:35vw;
+    color: white;
+    font: 300 4em/150% Impact;
+    text-align: center;
+  }
+  .loader:after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;}
+  
+  @keyframes dots {
+    0%, 20% {
+      color: rgba(0,0,0,0);
+      text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);}
+    40% {
+      color: white;
+      text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);}
+    60% {
+      text-shadow:
+        .25em 0 0 white,
+        .5em 0 0 rgba(0,0,0,0);}
+    80%, 100% {
+      text-shadow:
+        .25em 0 0 white,
+        .5em 0 0 white;}}

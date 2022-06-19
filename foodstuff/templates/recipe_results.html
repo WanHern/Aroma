@@ -1,0 +1,65 @@
+{% extends "empty_base.html" %}
+
+{% block title %} Aroma - Recipe results {% endblock %}
+
+{% block content %}
+
+<div id="ingredients-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span>
+            <span id="ingredients-modal-close" class="close">&times;</span> 
+            <h2 id="ingredients-modal-header">Ingredients</h2>
+        </span>
+        <h5>You have:</h3>
+        <ul id="ingredients-modal-has"></ul>
+        <div id="modal-missing-ingredients">
+            <h5 id="modal-missing-header">You are missing:</h3>
+            <ul id="ingredients-modal-missing"></ul>
+        </div>
+    </div>
+</div>
+
+<!-- Container div -->
+<div class="page-container">
+    <div id="pg-cont" class="pg-container" style="display:none">
+        <h2 class="cream_text">Recipes</h2>
+        <br>
+        <div onclick="goBack()" class="btn" style="background-color:rgb(83, 57, 35); color:rgb(248, 233, 219);">Back to ingredients</div>
+        <br><br>
+        <div id="results-div" class="card-container">
+            
+        </div>
+    </div>
+    <div id="cooking" style="margin-left:400px">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div id="area">
+        <div id="sides">
+          <div id="pan"></div>
+          <div id="handle"></div>
+        </div>
+        <div id="pancake">
+          <div id="pastry"></div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    <!-- goBack function -->
+    <script> function goBack()
+        {window.history.back()}
+    </script>
+
+{% endblock %}
+
+{% block tail %}     
+<script type="module" src="{{ url_for('static', filename='recipe_list.js') }}"></script> 
+<script src="{{ url_for('static', filename='javascript_cookie.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recipe_list.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='loading.css') }}">
+{% endblock %}

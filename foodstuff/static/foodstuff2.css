@@ -1,0 +1,334 @@
+.mainVideo {
+    overflow-y: hidden;
+     overflow:hidden;
+     
+ }
+ 
+ .videobg {
+     position: fixed;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     overflow: hidden;
+ 
+ }
+ header .overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     height: 100%;
+     width: 200%;
+     background-color: black;
+     opacity: 0.6;
+     z-index: 1;
+   }
+ 
+ .video {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     overflow: hidden;
+     height: 100%;
+     object-fit: cover;
+     
+ }
+ 
+ .middle {
+     position:absolute;
+     top: 40vh;
+     left:50vw;
+     transform: translate(-50%, -50%);
+     font-size: 300%;
+     color:white;
+     z-index: 2;
+ }
+ 
+ .trendingText {
+     position:absolute;
+     top: 117vh;
+     left:50vw;
+     transform: translate(-50%, -50%);
+     font-size: 300%;
+     text-align: center;
+     font-style: italic;
+     vertical-align: middle;
+     height:142px;
+     width:150%;
+     background-image: url(https://images.pexels.com/photos/301378/pexels-photo-301378.jpeg?cs=srgb&dl=background-carpentry-construction-301378.jpg&fm=jpg);
+     color:white;
+     font-style: bold;
+     z-index:2;
+ }
+ 
+ .partnerText {
+     position:absolute;
+     top: 45vh;
+     left:27vw;
+     transform: translate(-50%, -50%);
+     font-size: 300%;
+     color:white;
+     font-style: bold;
+     z-index: 2;
+ }
+ 
+ .middle1 {
+     position:absolute;
+     top: 33vh;
+     left:50vw;
+     transform: translate(-50%, -50%);
+     font-size: 600%;
+     color:white;
+     z-index: 2;
+ }
+ 
+ .middle2 {
+     position:absolute;
+     top: 47vh;
+     left:50vw;
+     transform: translate(-50%, -50%);
+     font-size: 150%;
+     color:white;
+     font-style: italic;
+     z-index: 2;
+ }
+ 
+ .carousel {
+     position:absolute;
+     top: 130vh;
+     left:50vw;
+     transform: translate(-50%, -50%);
+     font-size: 130%;
+     width:150%;
+     height: 583px;
+     background-color: black;
+ 
+     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://cdn.wallpapersafari.com/95/6/6FdyqJ.jpg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-y: 50%;
+     color:white;
+ 
+     z-index: 2;
+ }
+ 
+ .carousel-inner > .item > img {
+     width:1321px;
+     height:583px;
+   }
+ .trendingImageOne {
+     position:absolute;
+     top: 141vh;
+     left:34vw;
+     transform: translate(-50%, -50%);
+     font-size: 130%;
+     width:30%;
+     height: 15%;
+     background-color: black;
+     background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://live.staticflickr.com/4692/38579292685_69d444c452_b.jpg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-y: 50%;
+     color:white;
+ 
+     z-index: 3;
+ }
+ 
+ .trendingImageTwo {
+     position:absolute;
+     top: 141vh;
+     left:54vw;
+     transform: translate(-50%, -50%);
+     font-size: 130%;
+     width:30%;
+     height: 15%;
+     background-color: black;
+     background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--3640_12.jpg?itok=m2czMJHg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-y: 50%;
+     color:white;
+ 
+     z-index:3;
+ }
+ 
+ .trendingImageThree {
+     position:absolute;
+     top: 141vh;
+     left:74vw;
+     transform: translate(-50%, -50%);
+     font-size: 130%;
+     width:30%;
+     height: 15%;
+     background-color: black;
+     background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--3640_12.jpg?itok=m2czMJHg);
+ 
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-y: 50%;
+     color:white;
+ 
+     z-index:3;
+ }
+ .partner {
+     position:absolute;
+     top: 170vh;
+     left:75vw;
+     transform: translate(-50%, -50%);
+     font-size: 50%;
+     width:80%;
+     height: 35%;
+     background-color: black;
+ 
+     background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://cdn.pixabay.com/photo/2016/03/09/09/13/chef-1245676_960_720.jpg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-x: 100%;
+     color:white;
+ 
+     z-index: 0;
+ }
+ 
+ .account {
+     position:absolute;
+     top: 170vh;
+     left:22vw;
+     transform: translate(-50%, -50%);
+     font-size: 50%;
+     width:80%;
+     height: 35%;
+     background-color: black;
+     transition: transform .2s;
+     background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.pexels.com/photos/1265908/pexels-photo-1265908.jpeg?cs=srgb&dl=beverage-citrus-citrus-fruit-1265908.jpg&fm=jpg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position-y: -5%;
+ 
+ 
+ 
+     z-index: 0;
+ }
+ 
+ .button1 {
+     position:absolute;
+     top:58vh;
+     left:50vw;
+     transform: translate(-50%, -50%);
+     font-size: 100%;
+     border-radius: 18px;
+     padding:13px 35px;
+     margin:4px 2px;
+     cursor: pointer;
+     font-weight: bold;
+     color:white;
+     background-color: #af8203;
+     z-index: 2;
+ 
+ }
+ 
+ .button2 {
+     position:absolute;
+     top:68vh;
+     left:50vw;
+     transform: translate(-50%, -50%);
+     font-size: 100%;
+     border-radius: 18px;
+     padding:13px 35px;
+     margin:4px 2px;
+     cursor: pointer;
+     font-weight: bold;
+     color:white;
+     background-color: #af8203;
+     z-index: 2;
+  
+ }
+ 
+ .button3 {
+     position:absolute;
+     top:19vh;
+     left:10vw;
+     transform: translate(-50%, -50%);
+     font-size: 100%;
+     border-radius: 18px;
+     padding:13px 35px;
+     margin:4px 2px;
+     cursor: pointer;
+     font-weight: bold;
+     color:white;
+     background-color: #af8203;
+     z-index: 2;
+  
+ }
+ 
+ 
+ .middle3 {
+     position:relative;
+     margin-left:60vw;
+     top: 10vh;
+     /* left:50vw; */
+     transform: translate(-50%, -50%);
+     font-size: 300%;
+     color:white;
+     z-index: 1;
+ }
+ .middleScroll {
+     position:absolute;
+     top: 47vh;
+     left:50vw;
+     transform: translate(-50%, -50%);
+     font-size: 200%;
+     color:white;
+     font-style: bold;
+     z-index: 2;
+ }
+ 
+ 
+ .top-panel {
+     width: 100%;
+     height: 100vh;
+     background: #111;
+   }
+   
+   .top-panel::before{
+     content: '╲╱';
+     zoom:130%;
+     color: #fff;
+     position: absolute;
+     opacity: 0.7;
+     text-shadow: 0 0 6px rgba(0,0,0,0.5);
+     font-size: 20px;
+     width: 60px;
+     height: 40px;
+     line-height: 40px;
+     text-align: center;
+     border-radius: 10px;
+     bottom: 0px;
+     left: 50%;
+     margin-left: -30px;
+     animation: bounce 1s ease infinite;
+   }
+   
+   @keyframes bounce {
+     50% {
+       transform: translateY(-50%);
+     }
+     100% {
+       transform: translateY(0);
+     }
+   }
+   
+   .carousel{
+     position: relative;
+     top:50%;
+     width:50%;
+     z-index: 1;
+ 
+   }
+
+   .carousel img{
+    
+    min-width: 100%;
+
+  }
+

@@ -1,0 +1,96 @@
+{% extends "ingredient_base.html" %}
+
+{% block title %} Aroma {% endblock %}
+
+{% block content %}
+<div class="videobg">
+        <video loop muted autoplay poster="img/videoframe.jpg" class="video">
+            <source src="/static/pics/home.mp4" type="video/mp4">
+                
+        </video>
+        
+</div>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="margin-top:0px">
+ 
+    <div id="section1" class="container-fluid" style="height:100vh;width:100vw;padding:0">
+            <div class="middle">Aroma</div>
+            <div class="middle1">____________</div>
+            <div class="middle2">Be your own chef</div>
+            <div class="middleScroll">
+                <div class="top-panel"></div>
+            </div>
+            <div class="trendingText"> Trending recipes</div>
+<!--Carousel Wrapper-->
+<div id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+                <!--Indicators-->
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-2" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-2" data-slide-to="2"></li>
+                </ol>
+                <!--/.Indicators-->
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                  <div class="carousel-item active">
+                    <div class="view">
+                      <img class="d-block w-100" src="http://tomatowellness.com/wp-content/uploads/2014/03/meatless_lasagna111.jpg">
+                      <div class="mask rgba-black-light"></div>
+                    </div>
+                    <div class="carousel-caption">
+                      <a class="btn btn-secondary btn-lg" href="">Vegetable Lasagne</a>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <!--Mask color-->
+                    <div class="view">
+                      <img class="d-block w-100" src="https://content3.jdmagicbox.com/comp/bhiwadi/v6/pwfl1525268170t5j2v6/catalogue/gurukripa-foodies-bhiwadi-fsuxi.jpg" alt="Second slide">
+                      <div class="mask rgba-black-light"></div>
+                    </div>
+                    <div class="carousel-caption">
+                      <a class="btn btn-secondary btn-lg" href="">Fried Rice</a>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <!--Mask color-->
+                    <div class="view">
+                      <img class="d-block w-100" src="https://stage.prego.com/wp-content/uploads/sites/5/2014/12/prego-easy-chicken-florentine-fettuccine-alfredo-recipe4.jpg" alt="Third slide">
+                      <div class="mask rgba-black-light"></div>
+                    </div>
+                    <div class="carousel-caption">
+                      <a class="btn btn-secondary btn-lg" href="">Beef Stroganoff</a>
+                    </div>
+                  </div>
+                </div>
+                <!--/.Slides-->
+                <!--Controls-->
+                <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+                <!--/.Controls-->
+              </div>
+              <!--/.Carousel Wrapper-->
+          </section>
+            <a class="btn button1" href="{{ url_for('recipe_search_ingredient') }}" style="text-decoration:none">Search by ingredients</a>
+            <a class="btn button2" href="{{ url_for('recipe_search_cuisine') }}">Search by cuisine</a>
+    </div>
+
+    <div id="section2" class="container-fluid" style="height:100vh;width:100vw;padding:0">
+
+        </div>
+    </div>
+    
+</body>
+
+
+{% endblock %}
+
+{% block tail %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='foodstuff.css') }}"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recipe_list.css') }}"> 
+    <script type="module" src="{{ url_for('static', filename='home.js') }}"></script> 
+{% endblock %}

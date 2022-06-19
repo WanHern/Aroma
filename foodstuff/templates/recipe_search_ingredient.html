@@ -1,0 +1,198 @@
+{% extends "ingredient_base.html" %}
+
+{% block head %} <script type="module" src="{{ url_for('static', filename='foodstuff.js') }}"></script> {% endblock %}
+
+{% block title %} Aroma - Edit Ingredients {% endblock %}
+
+{% block content %}
+
+<!-- Ingredient detail modal -->
+<div id="ingredient-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span>
+            <span id="ingredient-modal-close" class="close">&times;</span> 
+            <h2 class="centre-header">Nutritional Information (100g)</h2>
+        </span>
+        
+        <div class="content-section">
+            <h3 id="food-name"></h3>
+            <p>Energy:  <span id="nutrition-energy"></span> KJ</p>
+            <p>Fat:  <span id="nutrition-fat"></span> g</p>
+            <p>Cholesterol:  <span id="nutrition-cholesterol"></span> mg</p>
+            <p>Sodium:  <span id="nutrition-sodium"></span> mg</p>
+            <p>Potassium:  <span id="nutrition-potassium"></span> mg</p>
+            <p>Carbohydrates(total):  <span id="nutrition-carbs"></span> g</p>
+            <p>Sugar:  <span id="nutrition-sugar"></span> g</p>
+            <p>Fiber:  <span id="nutrition-fiber"></span> g</p>
+            <p>Protein:  <span id="nutrition-protein"></span> g</p>
+        </div>
+    </div>
+      
+</div> 
+<!-- Delete ignredient modal -->
+<div id="delete-ingredient-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="content-section">
+            <h3>Are you sure you want to delete all your saved ingredients?</h3>
+            <button id="delete-ingredients-yes" class="btn btn-danger" style="float:left;margin-right:10px" type="button l-float">Yes, delete them</button>
+            <button id="delete-ingredients-no" class="btn btn-secondary" style="float:left" type="button l-float">No</button>
+        </div>
+    </div>
+          
+</div> 
+    
+<!-- Login Ingredient merge modal -->
+<div id="ingredient-merge-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span>
+            <span id="ingredient-merge-modal-close" class="close">&times;</span> 
+            <h2 class="centre-header">Merge Error</h2>
+        </span>
+        
+        <div class="content-section">
+            <p>Would you like to keep overwrite your temporary list with your saved ingredients, or merge the two?</p>
+            <button id="overwrite-ingredients" class="btn btn-danger" style="float:left;margin-right:10px" type="button l-float">Overwrite</button>
+            <button id="merge-ingredients" class="btn btn-secondary" style="float:left" type="button l-float">Merge</button>
+        </div>
+    </div>
+      
+</div> 
+
+<div class="flex-ingredients">
+    <div class='row'>
+        <div class="left-column"> 
+            <div class='sidebar-column'>
+                <ul class="nav nav-tabs nav-fill">
+                    <li class="nav-item" >
+                        <div class="nav-link tabs active" id="tab-1" >1</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link tabs" id="tab-2">2</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link tabs" id="tab-3">3</div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link tabs clear-tab" style="color:red;padding-left:0px;padding-right:0px" id="tab-clear">Clear</div>
+                    </li>
+                </ul>
+                <ul id="ingredient-list" class="list-group"></ul>
+            </div>
+        </div>
+        <div class='ingredients-column'>
+            <legend class="cream_text border-bottom mb-4">Add by typing</legend>
+            <br>
+            <div>
+                <input id="ingredients-input" class="form-control form-control-lg input-button" placeholder="Enter Ingredients">
+                <button id="add-text" class="btn add-btn" type="button l-float" style="background-color:rgb(209, 165, 129); color:rgb(51, 30, 11);">Add</button>
+                <button id="search-recipes" class="btn search-recipes" style="background-color:rgb(83, 57, 35); color:rgb(248, 233, 219);">Search</button>
+            </div>
+            <div class="alert alert-warning warning-box" id="empty-error" role="alert" >
+                Please add ingredients before searching.
+            </div>
+            <!-- A div for keeping the cards from floating up -->
+            <div>
+            <br><br>
+            <legend class="cream_text border-bottom mb-4">Add by category</legend>
+            </div>
+            <div style="margin-left:0px;margin-top:30px;">
+                <div id="return-categories" style="display:none" class="btn btn-secondary">Categories</div>
+            </div>
+                <div style="margin-left:0px;margin-top:30px;">
+                    <div id="return-categories" style="display:none" class="btn btn-secondary">Categories</div>
+                </div>
+                
+                <div class="card-carrier" id="card-carrier">     
+                    <div id="card-grains" class="card category-card">
+                        <img src="https://media.gettyimages.com/photos/brown-bread-on-cutting-board-picture-id717161741" class="card-img-top card-image" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Grains</h5>
+                        </div>
+                    </div>
+                    <div id="card-vegetables" class="card category-card">
+                        <img src="https://www.nestlechoosewellness.com.au/wp-content/uploads/how-to-eat-more-veges.jpg" class="card-img-top card-image" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Vegetables</h5>
+                        </div>
+                    </div>
+                <div id="card-meat" class="card category-card">
+                    <img src="https://www.telegraph.co.uk/content/dam/news/2016/03/24/meat_2491302b_trans_NvBQzQNjv4BqpJliwavx4coWFCaEkEsb3kvxIt-lGGWCWqwLa_RXJU8.jpg?imwidth=450" class="card-img-top card-image" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Meat</h5>
+                    </div>
+                </div>
+                <div id="card-sauce" class="card category-card">
+                    <img src="https://www.thespruceeats.com/thmb/jtggLv054a6gc6fvOsciBj8z6Mc=/2777x1852/filters:no_upscale():max_bytes(150000):strip_icc()/pad-thai-sauce-recipe-3217195-Ingredients-5babeea146e0fb0025fb45c3.jpg" class="card-img-top card-image" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Sauces</h5>
+                    </div>
+                </div>
+                <div id="card-tomato" class="card ingredient-card" style="display:none">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Bright_red_tomato_and_cross_section02.jpg/220px-Bright_red_tomato_and_cross_section02.jpg" class="card-img-top card-image" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Tomato</h5>
+                        <div id="add-tomato" class="btn btn-primary">Add</div>
+                    </div>
+                </div>
+                <div id="card-carrot" class="card ingredient-card" style="display:none">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/13-08-31-wien-redaktionstreffen-EuT-by-Bi-frie-037.jpg/220px-13-08-31-wien-redaktionstreffen-EuT-by-Bi-frie-037.jpg" class="card-img-top card-image" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Carrot</h5>
+                        <div id="add-carrot" class="btn btn-primary">Add</div>
+                    </div>
+                </div>
+                <div id="card-potato" class="card ingredient-card" style="display:none">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Various_types_of_potatoes_for_sale.jpg/215px-Various_types_of_potatoes_for_sale.jpg" class="card-img-top card-image" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Potato</h5>
+                            <div id="add-potato" class="btn btn-primary">Add</div>
+                        </div>
+                    </div>        
+                <div id="card-rice" class="card ingredient-card" style="display:none">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/300px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg" class="card-img-top card-image" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Rice</h5>
+                        <div id="add-rice" class="btn btn-primary">Add</div>
+                    </div>
+                </div>
+                <div id="card-bread" class="card ingredient-card" style="display:none">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Breadindia.jpg/191px-Breadindia.jpg" class="card-img-top card-image" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Bread</h5>
+                        <div id="add-bread" class="btn btn-primary">Add</div>
+                    </div>
+                </div>
+                <div id="card-flatbread" class="card ingredient-card" style="display:none">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/PileofpitaS.jpg" class="card-img-top card-image" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Flatbread</h5>
+                        <div id="add-flatbread" class="btn btn-primary">Add</div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block tail %} 
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='edit_ingredients.css') }}">    
+<script src="{{ url_for('static', filename='javascript_cookie.js') }}"></script>
+
+<!-- Jquery-ui code -->
+<link rel="stylesheet" href="/static/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+<script type="module" src="/static/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>  -->
+<!-- Underscore.js -->
+<script src="{{ url_for('static', filename='underscore.js') }}"></script>
+
+<script type="module" src="{{ url_for('static', filename='edit_ingredients.js') }}"></script> 
+ 
+{% endblock %}

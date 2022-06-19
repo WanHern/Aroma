@@ -1,0 +1,26 @@
+.card-title {
+    height:50px;
+    overflow:hidden;
+  }
+
+  .like-button {
+    font-size:200%;
+    color:grey;
+    float:right;
+    vertical-align:top;
+    cursor:pointer;
+    transition: text-shadow 0.3s;
+    }
+  
+  .like-button:hover {
+    /* Faking an outline with a drop shadow */
+      text-shadow:    
+      -1px -1px 0 #ff0000,
+      1px -1px 0 #ff0000,
+      -1px 1px 0 #ff0000,
+      1px 1px 0 #ff0000;  
+    }
+  
+  .like-liked {
+    color: #ff0000
+  }

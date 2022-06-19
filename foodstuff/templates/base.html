@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/pics/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/pics/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/pics/favicon-16x16.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <title> {% block title %}{% endblock %} </title>
+</head>
+<body>
+
+    <!-- Navbar stuff -->
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+
+            <!-- Navbar Left Side -->
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{{ url_for('home') }}"><img class="foodstuff-img-navbar" src="{{ url_for('static',filename='pics/'+'aroma.png') }}"><b> AROMA</b></a>
+              <div id="dropdown-div" class="dropdown">
+                <span id="drop-btn" class="nav-item nav-link">Find Recipe</span>
+                <div id="dropdown" style="padding-top:10Fpx" class="dropdown-content">
+                  <a href="{{ url_for('recipe_search_ingredient') }}">By Ingredient</a>
+                  <a href="{{ url_for('recipe_search_cuisine') }}">By Cuisine</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{ url_for('shopping_list') }}"><img class="foodstuff-img-navbar" src="{{ url_for('static',filename='pics/'+'list.png') }}">Shopping list</a>
+                <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+                <!-- Hidden -->
+                <div class="nav-item nav-link cursor-hand" style="display:none" id="login-navbar" >Login</div>
+                <a class="nav-item nav-link" style="display:none" href="{{ url_for('register') }}" id="signup-navbar">Sign up</a>
+              {% else%}
+                <div class="nav-item nav-link cursor-hand" id="login-navbar">Login</div>
+                <a class="nav-item nav-link" href="{{ url_for('register') }}" id="signup-navbar">Sign up</a>
+                <a class="nav-item nav-link" href="{{ url_for('partner') }}" id="partner-navbar">Partner with us</a>
+                <!-- Hidden -->
+                <a class="nav-item nav-link" style="display:none" href="{{ url_for('shopping_list') }} " id="shop-navbar"><img class="foodstuff-img-navbar" src="{{ url_for('static',filename='pics/'+'list.png') }}">Shopping list</a>
+                <a class="nav-item nav-link" style="display:none" href="{{ url_for('account') }}" id="account-navbar">Account</a>
+                <a class="nav-item nav-link" style="display:none" href="{{ url_for('logout') }}" id="logout-navbar">Logout</a>
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+
+  <!-- #region Login Modal -->
+  <div id="login-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span>
+          <span id="login-modal-close" class="close">&times;</span> 
+          <h2>Login</h2>
+      </span>
+      
+      <!-- #region Login Content -->
+
+      <div class="content-section">
+        <!-- All required fields for login -->
+        <form method="POST" action="">
+            <fieldset class="form-group">
+
+                <!-- Email -->
+                <div class="form-group">
+                    <div class="form-control-label" style="color:#000;">Email</div>
+                    <input class="form-control form-control-lg" placeholder="Email" id="login-email">
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                  <div class="form-control-label" style="color:#000;">Password</div>
+                  <input type="password" class="form-control form-control-lg" placeholder="Password" id="login-password">
+                </div>
+                <div style="display:none" class="alert alert-danger" id="login-modal-error" role="alert">
+                  <div>Incorrect Email or Password. Please try again</div>
+                </div>
+
+                <!-- Remember me -->
+                <div class="form-check" style="color:#000;">
+                    <input type="checkbox" class="form-check-input">
+                    <div class="form-check-label">Remember Me</div>
+                </div>
+            </fieldset>
+
+            <!-- Submit button -->
+            <div class="btn btn-outline-danger" id="loginsubmit">
+                Submit
+            </div>
+
+            <!-- Forgot password -->
+            <small class="text-muted ml-0">
+                <a href="{{ url_for('reset_request') }} " style="color:rgb(190, 51, 51);">Forgot Password?</a>
+            </small>
+        </form>
+    </div>
+      <!-- #endregion -->
+    </div>
+  </div>
+
+    <main role="main" class="container">
+      <div class="row">
+
+        <!-- Main content section -->
+          <div class="col-md-8">
+
+            <!-- Flash messages area first -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ category }}">
+                    {{ message }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <!-- Actual page content -->
+            {% block content %}{% endblock %}
+
+          </div>
+          {% block sidebarcontent %}{% endblock %}
+      </div>
+    </main>
+
+</body>
+
+  <!-- Mainly for appending page specific javascript -->
+  {% block tail %}{% endblock %} 
+  
+  <!-- jQuery, Popper.js, Bootstrap JS -->
+  <script src="{{ url_for('static', filename='jquery-3.3.1.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="module" src="{{ url_for('static', filename='base.js') }}"></script>
+
+  <div class="footer">
+    <div class="container">
+      <span style="color: rgb(209, 191, 179);">Created by Hi-5-Proj.</span>
+      <a href="{{ url_for('about')}}" style="color: rgb(255, 245, 238);">About us</a>
+    </div>
+  </div>
+
+</html>

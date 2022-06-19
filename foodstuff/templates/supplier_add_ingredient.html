@@ -1,0 +1,119 @@
+{% extends "admin_base.html" %}
+
+{% block title %} Aroma - Add ingredient {% endblock %}
+
+{% block content %}
+
+    {% if add %}
+        <h2 class="cream_text">Add ingredient</h2>
+    {% endif %}
+    {% if edit %}
+        <h2 class="cream_text">Edit ingredient</h2>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('supplier_home') }}" class="btn" style="background-color:rgb(83, 57, 35); color:rgb(248, 233, 219);">Cancel</a>
+    <br><br>
+    <div class="content-section">
+
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <!-- Name -->
+                <div class="form-group">
+                    {{ form.name.label(class="form-control-label") }}
+                    {% if form.name.errors %}
+                        {{ form.name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.name(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <!-- Location name -->
+                <div class="form-group">
+                    {{ form.location_name.label(class="form-control-label") }}
+                    {% if form.location_name.errors %}
+                        {{ form.location_name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.location_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.location_name(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <!-- Location address -->
+                <div class="form-group">
+                    {{ form.location_address.label() }}
+                    {{ form.location_address(class="form-control-file") }}
+                    {% if form.location_address.errors %}
+                        {% for error in form.location_address.errors %}
+                            <span class="text-danger">{{ error }}</span><br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <!-- Price -->
+                <div class="form-group">
+                    {{ form.price.label() }}
+                    {{ form.price(class="form-control-file") }}
+                    {% if form.price.errors %}
+                        {% for error in form.price.errors %}
+                            <span class="text-danger">{{ error }}</span><br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <!-- Price per weight -->
+                <div class="form-group">
+                    {{ form.price_per_weight.label() }}
+                    {{ form.price_per_weight(class="form-control-file") }}
+                    {% if form.price_per_weight.errors %}
+                        {% for error in form.price_per_weight.errors %}
+                            <span class="text-danger">{{ error }}</span><br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <!-- Weight -->
+                <div class="form-group">
+                    {{ form.weight.label() }}
+                    {{ form.weight(class="form-control-file") }}
+                    {% if form.weight.errors %}
+                        {% for error in form.weight.errors %}
+                            <span class="text-danger">{{ error }}</span><br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <!-- Image -->
+                <div class="form-group">
+                    {{ form.image.label() }}
+                    {{ form.image(class="form-control-file") }}
+                    {% if form.image.errors %}
+                        {% for error in form.image.errors %}
+                            <span class="text-danger">{{ error }}</span><br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+
+            <!-- Submit button -->
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-danger") }}
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}
+
+{% block tail %}     
+<script src="{{ url_for('static', filename='supplier_add_ingredients.js') }}"></script>
+{% endblock %}

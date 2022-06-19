@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %} Aroma - Recipe results {% endblock %}
+
+{% block content %}
+
+<div id="ingredients-modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span>
+            <span id="ingredients-modal-close" class="close">&times;</span> 
+            <h2 id="ingredients-modal-header">Ingredients</h2>
+        </span>
+        <h5>You have:</h3>
+        <ul id="ingredients-modal-has"></ul>
+        <div id="modal-missing-ingredients">
+            <h5 id="modal-missing-header">You are missing:</h3>
+            <ul id="ingredients-modal-missing"></ul>
+        </div>
+    </div>
+</div>
+
+<!-- Container div -->
+<div class="page-container">
+    <div class="pg-container">
+        <h2 class="cream_text">Recipes</h2>
+        <br>
+        <div onclick="goBack()" class="btn" style="background-color:rgb(83, 57, 35); color:rgb(248, 233, 219);">Back to cuisines</div>
+        <br><br>
+        <div class="card-container">
+            <div id="card-beef-stroganoff" class="card recipe-card" style="width: 18rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Beef_Stroganoff-02_cropped.jpg/250px-Beef_Stroganoff-02_cropped.jpg" class="card-img-top card-image" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Beef Stroganoff</h5>
+                    <button id="ingredients-beef-stroganoff" type="button" class="btn btn-outline-warning card-button">You are missing 3 Ingredients</button>
+                    <a class="btn btn-primary" href="{{ url_for('recipe_beef_stroganoff') }}">Get Started</a>
+                    {% if current_user.is_authenticated %}
+                        <span id="beef-strog-like" class="like-button">&hearts;</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <!-- goBack function -->
+    <script> function goBack()
+        {window.history.back()}
+    </script>
+
+{% endblock %}
+
+{% block tail %}     
+<script type="module" src="{{ url_for('static', filename='recipe_list.js') }}"></script> 
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recipe_list.css') }}">
+{% endblock %}

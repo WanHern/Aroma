@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+
+{% block title %} Aroma - Account {% endblock %}
+
+{% block content %}
+
+    <h2>Account</h2>
+    <br>
+    <div class="content-section">
+
+        <!-- Tab links -->
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'Info')">My Info</button>
+          <button class="tablinks" onclick="openTab(event, 'FavMeals')">FavMeals</button>
+          <button class="tablinks" onclick="openTab(event, 'Stats')">Stats</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="Info" class="tabcontent">
+
+            <!-- Shows user details -->
+            <div class="media">
+                <img class="rounded account-img" src="{{ image_file }}">
+                <div class="media-body">
+                    <h3 class="account-heading border-bottom mb-4">{{ current_user.username }}</h3>
+                    <p class="text-secondary">{{ current_user.email }}</p>
+                    <p class="text-secondary">{{ current_user.address }}</p>
+                    <h3 class="account-heading border-bottom mb-4" style="font-size: 20px">Expenses</h3>
+                    <p>Monthly budget: {{ current_user.budget }}</p>
+                    <p>Expenditure this month: {{ expenses_month }}</p>
+                    <p>Monthly budget left: {{ current_user.budget - expenses_month }}</p>
+                </div>
+            </div>
+
+            <!-- Button to edit user details -->
+            <button class="btn btn-danger" id="edit_profile_btn">Edit profile</button>
+
+        </div>
+
+        <div id="FavMeals" class="tabcontent">
+          <!-- Container div -->
+          <div id="card-holder" style="clear:both">
+
+          </div>
+           
+        </div>
+
+        <div id="Stats" class="tabcontent">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <!-- The Modal -->
+        <div id="edit_profile_mdl" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" id="modal-close">&times;</span>
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-2">Account Info</legend>
+
+                        <!-- Username -->
+                        <div class="form-group">
+                            {{ form.username.label(class="form-control-label") }}
+                            {% if form.username.errors %}
+                                {{ form.username(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.username.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.username(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            {{ form.email.label(class="form-control-label") }}
+                            {% if form.email.errors %}
+                                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.email(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+
+                        <!-- Address -->
+                        <div class="form-group">
+                            {{ form.address.label() }}
+                            {{ form.address(class="form-control-file") }}
+                            {% if form.address.errors %}
+                                {% for error in form.address.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <!-- Profile picture -->
+                        <div class="form-group">
+                            {{ form.picture.label() }}
+                            {{ form.picture(class="form-control-file") }}
+                            {% if form.picture.errors %}
+                                {% for error in form.picture.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <!-- Monthly budget -->
+                        <div class="form-group">
+                            {{ form.budget.label() }}
+                            {{ form.budget(class="form-control-file") }}
+                            {% if form.budget.errors %}
+                                {% for error in form.budget.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <!-- Expenses update -->
+                        <div class="form-group">
+                            {{ form.expenses_update.label() }}
+                            {{ form.expenses_update(class="form-control-file") }}
+                            {% if form.expenses_update.errors %}
+                                {% for error in form.expenses_update.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <!-- Password authorisation -->
+                        <legend class="border-bottom mb-2">Authorise changes</legend>
+                        <div class="form-group">
+                            {{ form.password.label(class="form-control-label") }}
+                            {% if form.password.errors %}
+                                {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.password(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+
+                    <!-- Submit button -->
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-danger") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for chart -->
+    <script>
+        new Chart(document.getElementById("myChart"), {
+            type: 'bar',
+            data: {
+            labels: ["Week1", "Week2", "Week3", "Week4"],
+            datasets: [{
+                label: "Weekly Expenditure ($)",
+                type: "bar",
+                borderColor: "#8e5ea2",
+                data: ['{{ expenses[0] }}', 
+                        '{{ expenses[1] }}', 
+                        '{{ expenses[2] }}', 
+                        '{{ expenses[3] }}', 
+                        '{{ expenses[4] }}'
+                        ],
+                fill: false
+                }, {
+                label: "Weekly limit",
+                type: "line",
+                borderColor: "#3e95cd",
+                data: [{{ weekly_limit }},{{ weekly_limit }},{{ weekly_limit }},{{ weekly_limit }},{{ weekly_limit }}],
+                fill: false
+                }
+            ]
+            },
+            options: {
+            title: {
+                display: true,
+                text: 'Monthly Expenditure ($)'
+            },
+            legend: { display: false }
+            }
+        });
+    </script>      
+
+{% endblock content %}
+
+{% block tail %}
+    <script src="{{ url_for('static', filename='account.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='account.css') }}"> 
+{% endblock %}
+
+
+

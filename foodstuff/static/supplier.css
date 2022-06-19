@@ -1,0 +1,95 @@
+.card-img-top {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.card-body:hover .card-img-top {
+  opacity: 0.3;
+}
+
+.card-body:hover .middle {
+  opacity: 1;
+}
+
+.card-body{
+	position: relative;
+}
+
+.supplier-card-title {
+	vertical-align:center;
+	float:left;
+	margin-right:25px;
+	margin-top:5px
+}
+.supplier-edit-btn {
+	float:left;
+	display:inline-block;
+	margin-bottom: 5px
+}
+.supplier-card-delete.btn {
+	float:left;
+	display:inline-block;
+	color:white;
+    background-color: red;
+    border-color: red;
+    margin-bottom: 5px
+}
+
+.supplier-card-stats.btn {
+	float:right;
+	display:inline-block;
+	color:white;
+    background-color: black;
+    border-color: black;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

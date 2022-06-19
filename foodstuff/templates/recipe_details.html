@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %} Aroma - Recipe details {% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <h2 class="cream_text">{{ name }}</h2>
+    <br>
+    <div onclick="goBack()" class="btn" style="background-color:rgb(83, 57, 35); color:rgb(248, 233, 219);">Back</div>
+    <br><br>
+    <div style="height:33vh">
+        <div class="card" style="width: 25rem; float:left;">
+            <div class="card-body">
+                <h5 class="card-title">Nutritional and Allergen Information</h5>
+                <p class="card-text">
+                    <b>Vegetarian:</b> {% if  vegetarian %} Yes {% else %} No {% endif %}<br>
+                    <b>Vegan:</b> {% if  vegan %} Yes {% else %} No {% endif %}<br>
+                    <b>Gluten Free:</b> {% if  gf %} Yes {% else %} No {% endif %}<br>
+                    <b>Dairy Free:</b> {% if  df %} Yes {% else %} No {% endif %}<br>
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem; float:right">
+            <img style="height: 220px;" src="{{image}}" class="card-img-top" alt="...">
+        </div>
+    </div>
+    <div class="card" style="width: 70vw;margin-top:50px;margin-left:10px;">
+        <div class="card-body">
+            <h5 class="card-title">Instructions</h5>
+            <ol>
+                {% for line in steps %}
+                - {{ line }}
+                <br>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+    <br><br>
+</div>
+
+    <!-- goBack function -->
+    <script> function goBack()
+        {window.history.back()}
+    </script>
+    
+{% endblock %}
+
+{% block tail %}     
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recipe_list.css') }}">
+{% endblock %}

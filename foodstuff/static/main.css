@@ -1,0 +1,334 @@
+/* This file is pretty much for styles, not much to it */
+
+body {
+  background-image: url('pics/background.png');
+  height: 100;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #3f0e0e;
+}
+
+.bg-steel {
+  background-image: linear-gradient(to right, #422a0b, rgb(87, 41, 4));
+  opacity: 0.8;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #fff9f9;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffd89d;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #f8f5f4;
+  padding: 13px 20px;
+  border: 1px solid #1b1006;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+  white-space: pre-line;
+  width: 35vw;
+  font-size: 23px;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+  width: 35vw;
+  font-size: 16px;
+}
+
+.article-img {
+  height: 55px;
+  width: 75px;
+  margin-right: 16px;
+  margin-top: 5px
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.star-img {
+  height: 20px;
+  width: 20px;
+  margin-bottom: 4px;
+}
+
+.account-img {
+  height: 90px;
+  width: 120px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 40px
+}
+
+.account-heading {
+  margin-top: 20px;
+  font-size: 1.8rem;
+}
+
+.homepage-pic {
+  margin-bottom:10px;
+  width: 15vw;
+}
+
+.post-pic:hover {
+  opacity: 0.7;
+  transition: 0.1s;
+}
+
+.more_post-pic {
+  margin-bottom:5px;
+  width: 10vw;
+}
+
+.more_post-pic:hover {
+  opacity: 0.7;
+  transition: 0.1s;
+}
+
+.foodstuff-img {
+  height: 240px;
+  width: 320px;
+  margin-top: -80px
+}
+
+.foodstuff-img-navbar {
+  height: 30px;
+  width: 40px;
+  margin-top: -10px
+}
+
+.utility {
+  margin-top: 70px;
+}
+
+.cream_text {
+  color:rgb(228, 199, 179);
+}
+
+
+/* Modal CSS from W3 Schools */
+
+/* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed;
+z-index: 3; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%;
+overflow: auto; 
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+z-index: 2;
+background-color: #fefefe;
+margin: 15% auto;
+padding: 20px;
+border: 1px solid #888;
+width: 50%;
+}
+
+.close {
+float: right;
+font-size: 30px;
+font-weight: bold;
+padding-right: 20px;
+}
+
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+}
+
+.cursor-hand {
+cursor: pointer
+}
+
+.floatboxr {
+float: right;
+width: 45%;
+height: 45%;
+background: lightblue;
+}
+.floatboxl {
+float: left;
+width: 45%;
+height: 45%;
+background: lightblue;
+}
+
+.flex-home {
+display: flex;
+height:40vh;
+}
+
+.flex-home > div {
+background-color: #ffd6d6;
+width:50%;
+height:100%;
+padding: 20px;
+font-size: 30px;
+margin: auto;
+text-align: center;
+transition: box-shadow .4s;
+}
+
+.flex-home > div:hover {
+box-shadow: 0 0 11px rgba(53, 3, 82, 0.3); 
+}
+
+.vert-centre-text {
+display: inline-block;
+vertical-align: -8vw;
+}
+
+.page-container {
+margin-left:10px;
+margin-right:10px;
+text-align:center;
+}
+
+.footer {
+position: fixed;
+bottom: 0;
+width: 100%;
+/* Set the fixed height of the footer here */
+height: 30px;
+background-color: #3f2e1b;
+opacity: 0.8;
+}
+
+.flex-container {
+display:flex;
+margin: auto;
+width: 70vw
+}
+
+.flex-half-col {
+flex-grow:1;
+}
+.flex-half-col2 {
+flex-grow:2;
+}
+
+.float-card {
+float:left;
+margin: 5px;
+color: rgb(189, 123, 82);
+}
+
+
+.cursor-hand {
+cursor:pointer;
+}
+.pg-container {
+width:100%;
+height:50px
+}
+
+.card-image {
+height: 180px;
+}
+
+.card-image:hover {
+opacity: 0.5;
+transition: 0.5s;
+}
+
+/* Dropdown Button */
+.dropbtn {
+background-color: #3498DB;
+color: white;
+padding: 16px;
+font-size: 16px;
+border: none;
+cursor: pointer;
+}
+
+
+
+
+
+/* Used for find recipe dropdown */
+
+
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+background-color: rgb(255, 255, 255);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: rgb(122, 81, 48);
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+color: rgb(255, 218, 170);
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: rgb(71, 53, 27)}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+.center {
+margin: 0 auto;
+padding: 10px;
+}

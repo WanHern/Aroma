@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %} Aroma - Shopping list {% endblock %}
+
+{% block content %}
+    
+    <div class="sidenav" style="background: rgb(0, 0, 0);" id = "shoppingCart">
+        <div id = "shoppingCart_content">
+            <h1>Shopping Cart</h1>
+        </div>
+        
+        <footer>
+	    	<p><button class = "checkoutbutton" id = "checkoutbutton" onclick = "checkout('{{current_user.username}}', '{{current_user.email}}', '{{current_user.address}}')" disabled>Buy Ingredients</button></p>
+	  	</footer>
+	</div>
+	
+	<!-- Display shopping list -->
+    <div id = "main_shoppingList">
+		<h2 class="cream_text">Your shopping list</h2>
+		<br>
+		<legend class="cream_text border-bottom mb-4">In your list</legend>
+		{% for item in all_items %}
+			<h2 class="cream_text" style="font-size: 20px"><a class="ml-2" href="{{ url_for('delete_shopping_ingredient', ingredient_id=item.id) }}" style="font-size:20px; color:rgb(190, 51, 51);">x</a> {{item.name}}</h2>
+		{% endfor %}
+		<br>
+		<legend class="cream_text border-bottom mb-4">Available suppliers</legend>
+		{% for supplier_ingredients in shoppingList %}
+			{% for supplier_ingredient in supplier_ingredients %}
+	        <button class="accordion">{{supplier_ingredient.name}}</button>
+	        <div class="panel">
+	            <article class="media content-section">
+	            <img class="rounded account-img" src="{{ url_for('static',filename='pics/'+supplier_ingredient.image) }}">
+	            <div class="container">
+	                <div class="media-body">
+	                    <div class="article-metadata">
+	                        <h2 class="mr-2">{{supplier_ingredient.name}}</h2>
+	                    </div>
+	                    <h2 class="article-title">Available at</h2>
+		                    <h3 class="article-content">{{supplier_ingredient.location_name}}<h4 class="text-muted article-content">{{supplier_ingredient.location_address}}</h4></h3>
+		                    <a target="_blank" href="https://www.google.com/maps/place/Park+N'shop/@-33.9162996,151.2383246,17z/data=!3m1!4b1!4m5!3m4!1s0x6b12b218c04e9dfb:0x84c8eaae1723cae7!8m2!3d-33.9162996!4d151.2405133">
+		                        <button class="btn btn-outline-warning">Find on map</button>
+		                    </a>
+		                    <button class="btn btn-outline-warning ingredient_buyOnline" id = "addToCart_{{supplier_ingredient.name}}" onclick ="addToCart('{{supplier_ingredient.name}}', '{{supplier_ingredient.location_name}}', {{supplier_ingredient.price}})">Add to Cart</button>
+		                    <br>
+						</div>
+					</div>
+				</article>
+			</div>
+			{% endfor %}
+	    {% endfor %}
+	</div>
+	<br><br><br><br>
+	
+    <script src="{{ url_for('static', filename='shopping_list.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='shopping_list.css') }}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock content %}

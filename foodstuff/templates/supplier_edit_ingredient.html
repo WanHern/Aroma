@@ -1,0 +1,44 @@
+{% extends "supplier_base.html" %}
+
+{% block title %} Aroma - Edit ingredients {% endblock %}
+
+{% block content %}
+
+    <div class="flex-container">
+        <div class="flex-half-col2">
+            <h2 class="cream_text">Edit Ingredient</h2>
+            <div class="content-section">
+                <h5>Ingredient Name:</h5>   
+                <input class="form-control form-control-lg" placeholder="Ingredient Name" value="{{food_name}}">
+                <br>
+                <h5>Ingredient Details:</h5>
+                <input class="form-control form-control-lg" placeholder="Ingredient Details" value="{{food_details}}">
+                <br>
+                <h5>Price:</h5>
+                <input class="form-control form-control-lg" placeholder="Ingredient Price" value="{{food_price}}">
+                <br>
+                <button id="confirm" class="btn btn-primary">Confirm</button>
+                <button id="cancel" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+        <div class="flex-half-col">
+            <div style="margin:10px">
+                <h3 class="cream_text" style="margin-bottom:20px">Upload ingredient image</h3>  
+                <input  class="form-control-file" type="file" name="pic" accept="image/*">
+                <br>
+                <br>
+                <button id="image-submit" class="btn btn-primary">Submit</button> 
+                <br>            
+                <br>     
+                <div style="display:none;width:75%" class="alert alert-success" id="submission-success" role="alert">
+                    <div>Upload Success!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block tail %}     
+<script src="{{ url_for('static', filename='supplier_edit_ingredients.js') }}"></script>
+{% endblock %}
